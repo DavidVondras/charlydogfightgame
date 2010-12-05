@@ -8,6 +8,7 @@ namespace df
 	{
 	private:
 		WorldDefinition _tempDef;
+		df::IStepable *_actor;
 
 	public:
 		World(void);

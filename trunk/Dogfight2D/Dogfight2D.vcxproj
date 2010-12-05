@@ -61,6 +61,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\JetEntity.cpp" />
     <ClCompile Include="src\Context.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GameInputListener.cpp" />
@@ -68,8 +69,10 @@
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\GhostObject.cpp" />
     <ClCompile Include="src\World.cpp" />
+    <ClCompile Include="src\TreeEntity.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\JetEntity.h" />
     <ClInclude Include="src\ArrayHelper.h" />
     <ClInclude Include="src\Config.h" />
     <ClInclude Include="src\DogfightCore.h" />
@@ -84,6 +87,7 @@
     <ClInclude Include="src\GhostObject.h" />
     <ClInclude Include="src\World.h" />
     <ClInclude Include="src\WorldDefinition.h" />
+    <ClInclude Include="src\TreeEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Context.h" />
