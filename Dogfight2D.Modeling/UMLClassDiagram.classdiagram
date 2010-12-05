@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="d19e0a04-3eb8-481b-8430-7db88a2185e6" name="UMLClassDiagram" linkedPackageId="813fe6db-37f6-41c8-9bc6-82f5683e083e" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="360d3e80-6bff-4a78-8119-dbcbfe5593df" name="core">
+        <elementDefinition Id="a964cf65-f448-42d8-bd84-8cee6080839d" />
+        <packagedElements>
+          <packageHasNamedElement>
+            <Interface Id="e7ea0981-9b17-4a4b-a89f-8196b1f2fca4" name="IStepable" isAbstract="false" isLeaf="false">
+              <elementDefinition Id="f1d3046d-c47a-4ceb-8022-1fba9e65229f" />
+              <ownedOperations>
+                <operation Id="7b4c618c-2b43-4eeb-a3cb-916341a938d0" name="Think" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="c45e5056-aca2-4098-a8cf-d34cbaca001c" />
+                </operation>
+                <operation Id="4ee47fa1-e7d6-457c-8737-b8c538afd5cc" name="Draw" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="a85eca03-b220-4cb2-aa73-cc3e027f06fb" />
+                </operation>
+              </ownedOperations>
+            </Interface>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="92972847-82d2-4814-a765-34605eb0b893" name="Entity" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="7fc97121-5ff2-40b7-8dea-303c27b48f1d" />
+              <suppliersInternal>
+                <interfaceRealization Id="20e50409-e14d-499e-a1cf-894f94ceda40">
+                  <interfaceMoniker Id="e7ea0981-9b17-4a4b-a89f-8196b1f2fca4" LastKnownName="IStepable" />
+                  <elementDefinition Id="347a09f3-e969-43d0-8d75-42de7c831bf4" />
+                </interfaceRealization>
+              </suppliersInternal>
+              <ownedAttributesInternal>
+                <property Id="60b83c56-c5f2-4d5b-a7ab-e7c00627761a" name="b2Body" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="fdbfa5ba-47e2-4e35-92a1-367031929e02" />
+                </property>
+              </ownedAttributesInternal>
+              <ownedOperationsInternal>
+                <operation Id="0406ab50-a677-489f-b180-d5be5da2e329" name="Think" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="628864c1-a45a-4673-a82c-54015c1e9059" />
+                </operation>
+                <operation Id="a42ac3e2-4e95-4447-895a-b42172ed1399" name="Draw" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="2c9a528f-87b7-483b-b479-23d24ea1f6e3" />
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="083853a7-b179-45f4-ac3f-15d4bf8e6c1d" name="df">
+        <elementDefinition Id="a6d868bf-1bee-40d2-b2d5-7a488b5eb412" />
+        <packagedElements>
+          <packageHasNamedElement>
+            <class Id="4562ff0e-3eaf-4f6d-80c6-98bfcbb98130" name="Main" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="920f0ac2-ce39-4488-89bf-e8bc69f2d093" />
+              <ownedOperationsInternal>
+                <operation Id="e9129f2d-b770-415d-8f0c-340f902583bc" name="Main" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="675e7518-7778-4ecc-8073-0668ff17da45" />
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="05ca0961-bca2-4dba-a602-9c374791d097" name="Game" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="c2772f2c-d2f3-46ba-8c0c-40d3b6061d04" />
+              <targetEnds>
+                <association Id="2542108d-22c5-45a9-b7d0-602a4a0db0ef" isDerived="false" sourceEndRoleName="Game" targetEndRoleName="App" isLeaf="false" isAbstract="false">
+                  <classMoniker Id="4562ff0e-3eaf-4f6d-80c6-98bfcbb98130" LastKnownName="Main" />
+                  <relationshipOwnedElementsInternal>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="c3dd7dbe-f543-4e5a-a150-2111c1d72cef" name="Game" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                        <elementDefinition Id="866f8135-e781-489d-92f2-07d80c34149d" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="33b9521e-bc09-41c5-aee9-721a73c18c0d" name="App" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                        <elementDefinition Id="2819b7b6-92e9-4cf5-ac0b-463a525fe99d" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                  </relationshipOwnedElementsInternal>
+                  <elementDefinition Id="e2edfc03-2c51-4ce1-91dd-7e7728586b1a" />
+                </association>
+              </targetEnds>
+              <ownedOperationsInternal>
+                <operation Id="56b15df2-b81c-4ca4-9a45-815273fef1bd" name="Initialize" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="2e1f8aeb-70d2-4912-adc6-dc9f63359fe4" />
+                </operation>
+                <operation Id="fc41e282-1b27-4ad0-8c95-0deea56ee4bb" name="Run" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="c756c216-546d-4625-99d2-8cdaa304b4f6" />
+                </operation>
+                <operation Id="c0b1766d-bdb4-4628-b15d-ed4c98f8ef2f" name="Step" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="517f6cf8-6b9e-43c6-ad32-3b82df02a986" />
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="f7478dd5-2bfd-458c-b34e-82d35272d0ca" name="World" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="2e3ef3f8-cd63-487a-9132-4e396e412019" />
+              <suppliersInternal>
+                <interfaceRealization Id="165ae3c6-c089-461c-a07b-08e5bf88db36">
+                  <interfaceMoniker Id="e7ea0981-9b17-4a4b-a89f-8196b1f2fca4" LastKnownName="IStepable" />
+                  <elementDefinition Id="9dade94c-0550-46ba-aaa9-d3cc32d900cd" />
+                </interfaceRealization>
+              </suppliersInternal>
+              <targetEnds>
+                <association Id="3a5c06e0-9c2f-4351-9be0-a28c1535e28f" isDerived="false" sourceEndRoleName="World" targetEndRoleName="Game" isLeaf="false" isAbstract="false">
+                  <classMoniker Id="05ca0961-bca2-4dba-a602-9c374791d097" LastKnownName="Game" />
+                  <relationshipOwnedElementsInternal>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="f83a2085-6402-4717-a914-54bcc4e4b671" name="World" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                        <elementDefinition Id="77f4dc32-5799-4125-99d2-7884a1b310c4" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="0fdcb7a1-2d2b-404f-a512-ce394c10e695" name="Game" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                        <elementDefinition Id="0f9675cf-c6e5-4b45-85f0-e8289c233c85" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                  </relationshipOwnedElementsInternal>
+                  <elementDefinition Id="8075c174-30a3-459e-a2e0-967aeb149c22" />
+                </association>
+                <association Id="da1adbc2-9610-4772-871c-f7c9f256df8b" isDerived="false" sourceEndRoleName="World" targetEndRoleName="PhysicObject" isLeaf="false" isAbstract="false">
+                  <classMoniker Id="92972847-82d2-4814-a765-34605eb0b893" LastKnownName="Entity" />
+                  <relationshipOwnedElementsInternal>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="e9b144c7-0d48-4637-b9bd-43aee534ef21" name="World" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                        <elementDefinition Id="a8a53cf7-a921-4e51-b8ea-93da1167a9a4" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="9e2b28b0-6dbc-43f8-9103-79683df86728" name="PhysicObject" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                        <lowerValueInternal>
+                          <literalString Id="65380e13-6d33-4983-817b-a3a29ff69f97" name="Lower" value="0">
+                            <elementDefinition Id="801daae7-4076-42d7-bf33-386067f55b0f" />
+                          </literalString>
+                        </lowerValueInternal>
+                        <upperValueInternal>
+                          <literalString Id="7739a3be-0803-49bf-99b1-5157ea64d848" name="Upper" value="n">
+                            <elementDefinition Id="e43596e2-56a0-4cb3-b834-279ba048fca9" />
+                          </literalString>
+                        </upperValueInternal>
+                        <elementDefinition Id="401c3a6d-2be3-407b-b163-ff505548c30a" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                  </relationshipOwnedElementsInternal>
+                  <elementDefinition Id="f510b73b-06df-48d0-9a17-d53bebdf606e" />
+                </association>
+              </targetEnds>
+              <ownedAttributesInternal>
+                <property Id="0f881759-045e-4f9c-9c33-b13bf5825cb1" name="WorldB2" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="3e120dc1-c650-460c-9eeb-ab8d65ce8bcb" />
+                </property>
+                <property Id="8cef5a6d-b29d-47d8-8372-709ccc104cd7" name="WorldSf" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ac573bdc-caa0-4ee6-9dcb-0e732c47bbed" />
+                </property>
+                <property Id="7c7b062d-3fc5-4cc8-8c19-5ae7a8b16a82" name="listStepable" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="060b01f9-cc51-482b-8bca-5982200424e4" />
+                </property>
+                <property Id="92af5677-c113-410c-926c-345d0f64ad30" name="listPhysicObject" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="68ac306e-70fe-4152-9436-3058a9b540f9" />
+                </property>
+              </ownedAttributesInternal>
+              <ownedOperationsInternal>
+                <operation Id="df980436-3dda-4028-ae88-4e33446e7115" name="Think" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="509efd49-f172-4947-af83-798e9dc875c2" />
+                </operation>
+                <operation Id="29037780-4b97-4699-b581-331a8a34598a" name="Draw" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="202b278b-f669-4a1d-923b-5bccca45478d" />
+                </operation>
+                <operation Id="d92bd91d-594a-4a05-a21a-5e3f0115588d" name="Initialize" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="37a1770f-41aa-4e95-aa87-63e8e2df3f18" />
+                  <ownedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="911854e6-baea-4f0f-8e2d-c8e4d11b329a" name="worldDefinition" direction="In" isUnique="false">
+                        <elementDefinition Id="483aaac1-8eed-4bf5-825a-a872a1527a97" />
+                      </parameter>
+                    </operationHasOwnedParameters>
+                  </ownedParameters>
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="55f1be91-ce50-42f9-9053-e76929d07330" name="WorldDefinition" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="4775f166-0051-4781-ab60-1519ab247d68" />
+              <suppliersInternal>
+                <dependency Id="a4cd716a-97d3-4b45-accd-132de4b67640">
+                  <classMoniker Id="f7478dd5-2bfd-458c-b34e-82d35272d0ca" LastKnownName="World" />
+                  <elementDefinition Id="60b17993-1856-44c0-a680-644ca41d674a" />
+                </dependency>
+              </suppliersInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="59300152-3425-4839-b1b7-f24f8f17164a" name="AeroplaneObject" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="96ef8587-f911-4588-b676-3db6f8ce6097" />
+              <generalsInternal>
+                <generalization Id="1efa88d3-d7e4-47bc-87f6-97cbb0eec072" isSubstitutable="false">
+                  <classMoniker Id="92972847-82d2-4814-a765-34605eb0b893" LastKnownName="Entity" />
+                  <elementDefinition Id="662094d3-3818-4fbd-bbaf-1375f705e6e6" />
+                </generalization>
+              </generalsInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="e50a893e-5ea4-4b79-b4c5-1310f103297a" name="JetAeroplane" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="42679903-9927-456e-af06-42ad341f7bbf" />
+              <generalsInternal>
+                <generalization Id="e65e5355-e704-4a63-928b-10576fa106f8" isSubstitutable="false">
+                  <classMoniker Id="59300152-3425-4839-b1b7-f24f8f17164a" LastKnownName="AeroplaneObject" />
+                  <elementDefinition Id="4208760f-2767-40fd-9d24-a71b48385bcc" />
+                </generalization>
+              </generalsInternal>
+            </class>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+  </packagedElements>
+  <package Id="813fe6db-37f6-41c8-9bc6-82f5683e083e" name="Dogfight2D.Modeling">
+    <elementDefinition Id="8b6fba07-92df-4d14-b32b-fe241adf100a" />
+    <profileInstances>
+      <packageHasProfileInstances Id="80535956-6d3c-40e2-85a3-c1ad22ab96c7">
+        <profileInstance Id="3a6a6c53-1f74-42b8-ad24-77a931c61431" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="125af96b-36e6-4bc5-9125-51beddfc9061">
+        <profileInstance Id="bde7a6c2-51a3-4511-8f47-56dfa6b7649a" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>
