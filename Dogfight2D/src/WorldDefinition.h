@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "DogfightCore.h"
+#include "ArrayHelper.h"
 
 namespace df
 {
@@ -16,9 +17,11 @@ namespace df
 		// Ground points
 		df::Point GroundPoints[GroundPointsNbMax];
 		int GroundPointsNb;
+		void AddGroundPoint(df::Point point) { ArrayHelper::Add<df::Point>(GroundPoints, point, GroundPointsNb, GroundPointsNbMax); }
 
 		// Trees
 		df::Point Trees[TreeNbMax];
 		int TreeNb;
+		void AddTree(df::Point point) { ArrayHelper::Add<df::Point>(Trees, point, TreeNb, TreeNbMax); }
 	};
 }
