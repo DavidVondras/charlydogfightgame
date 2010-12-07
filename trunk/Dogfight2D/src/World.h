@@ -1,6 +1,7 @@
 #pragma once
 #include "IStepable.h"
 #include "WorldDefinition.h"
+#include "GroundEntity.h"
 
 namespace df
 {
@@ -8,6 +9,7 @@ namespace df
 	{
 	private:
 		WorldDefinition _tempDef;
+		df::GroundEntity _groundEntity;
 		df::IStepable *_actor;
 
 	public:

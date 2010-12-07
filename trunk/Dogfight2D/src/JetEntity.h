@@ -1,10 +1,13 @@
 #pragma once
-#include "Entity.h"
+#include "IStepable.h"
+#include "BoundableObject.h"
 #include "DogfightCore.h"
 
 namespace df
 {
-	class JetEntity: public df::Entity
+	class JetEntity: 
+		public df::IStepable,
+		public df::BoundableObject
 	{
 	private:
 		sf::Sprite _sprite;
