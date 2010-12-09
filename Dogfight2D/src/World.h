@@ -2,6 +2,7 @@
 #include "IStepable.h"
 #include "WorldDefinition.h"
 #include "GroundEntity.h"
+#include <Box2D\Box2D.h>
 
 namespace df
 {
@@ -11,6 +12,7 @@ namespace df
 		WorldDefinition _tempDef;
 		df::GroundEntity _groundEntity;
 		df::IStepable *_actor;
+		b2World *_physicWorld;
 
 	public:
 		World(void);

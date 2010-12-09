@@ -1,30 +1,39 @@
 #include "World.h"
 #include "JetEntity.h"
+#include "Context.h"
 
 df::World::World(void)
 {
-	_actor = NULL;
 }
 
 
 df::World::~World(void)
 {
-	if(_actor != NULL)
-	{
-		delete _actor;
-		_actor = NULL;
-	}
+	delete _actor;
+	delete _physicWorld;
 }
 
 void df::World::Initialize(df::WorldDefinition const worldDefinition)
 {
+	// world definition temporary backup
 	_tempDef = worldDefinition;
-	_actor = new df::JetEntity();
+	
+	{	// World creation
+		b2Vec2 gravity(0.0f, -10.0f);
+		bool doSleep = true;
+		_physicWorld = new b2World(gravity, doSleep);
+	}
+		
+	// Actor creation
+	df::JetEntity *jetEntity = new df::JetEntity();
+	_actor = jetEntity;
+	jetEntity->RegisterToPhysicWorld(*_physicWorld);
 }
 
 void df::World::Think(df::InputListener const &inputListner)
 {
 	_actor->Think(inputListner);
+	_physicWorld->Step(df::Context::getEllapsedTime(), 6, 2);
 }
 
 void df::World::Draw(sf::RenderWindow &renderWindow)

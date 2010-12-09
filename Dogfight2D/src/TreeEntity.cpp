@@ -21,6 +21,10 @@ df::TreeEntity::~TreeEntity(void)
 {
 }
 
+void df::TreeEntity::RegisterToPhysicWorld(b2World &world)
+{
+}
+
 void df::TreeEntity::Think(df::InputListener const &inputListner)
 {
 	// TODO

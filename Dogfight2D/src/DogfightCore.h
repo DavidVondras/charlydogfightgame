@@ -2,6 +2,7 @@
 #include <SFML\System.hpp>
 #include <Box2D\Box2D.h>
 #include "Config.h"
+#include "ListHelper.h"
 
 namespace df
 {

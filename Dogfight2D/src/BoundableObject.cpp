@@ -3,6 +3,7 @@
 
 df::BoundableObject::BoundableObject(void)
 {
+	
 }
 
 

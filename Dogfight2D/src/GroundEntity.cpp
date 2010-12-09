@@ -10,6 +10,11 @@ df::GroundEntity::~GroundEntity(void)
 {
 }
 
+void df::GroundEntity::RegisterToPhysicWorld(b2World &world)
+{
+
+}
+
 void df::GroundEntity::Think(df::InputListener const &inputListner)
 {
 }
