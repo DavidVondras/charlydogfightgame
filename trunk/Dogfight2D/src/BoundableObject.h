@@ -8,12 +8,14 @@ namespace df
 	class BoundableObject
 	{
 	protected:
-		b2Body *physicBody;
-		std::list<df::Point> _boundaryPoints;
+		b2Body *_physicBody;
+		std::list<df::Point*> _boundaryPoints;
 
 	public:
 		BoundableObject(void);
 		~BoundableObject(void);
+
+		virtual void RegisterToPhysicWorld(b2World &world) = 0;
 	};
 }
 

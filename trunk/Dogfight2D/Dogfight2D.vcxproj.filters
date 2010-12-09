@@ -113,6 +113,9 @@
     <ClInclude Include="src\BoundableObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\ListHelper.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Context.h">

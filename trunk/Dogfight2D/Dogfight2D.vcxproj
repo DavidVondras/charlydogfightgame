@@ -41,10 +41,12 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)ReferenceAssemblies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>sfml-system-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;Box2D-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ReferenceAssemblies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -81,6 +83,7 @@
     <ClInclude Include="src\Config.h" />
     <ClInclude Include="src\DogfightCore.h" />
     <ClInclude Include="src\FileHelper.h" />
+    <ClInclude Include="src\ListHelper.h" />
     <ClInclude Include="src\ObjectDefinitionLoader.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\GameInputListener.h" />
