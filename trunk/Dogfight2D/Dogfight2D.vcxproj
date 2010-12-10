@@ -63,7 +63,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\BoundableObject.cpp" />
+    <ClCompile Include="src\PhysicObject.cpp" />
     <ClCompile Include="src\GroundEntity.cpp" />
     <ClCompile Include="src\JetEntity.cpp" />
     <ClCompile Include="src\Context.cpp" />
@@ -76,7 +76,7 @@
     <ClCompile Include="src\TreeEntity.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\BoundableObject.h" />
+    <ClInclude Include="src\PhysicObject.h" />
     <ClInclude Include="src\GroundEntity.h" />
     <ClInclude Include="src\JetEntity.h" />
     <ClInclude Include="src\ArrayHelper.h" />
@@ -89,13 +89,14 @@
     <ClInclude Include="src\GameInputListener.h" />
     <ClInclude Include="src\InputListener.h" />
     <ClInclude Include="src\IScreen.h" />
-    <ClInclude Include="src\IStepable.h" />
+    <ClInclude Include="src\StepableObject.h" />
     <ClInclude Include="src\GhostObject.h" />
     <ClInclude Include="src\World.h" />
     <ClInclude Include="src\WorldDefinition.h" />
     <ClInclude Include="src\TreeEntity.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="src\Context.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

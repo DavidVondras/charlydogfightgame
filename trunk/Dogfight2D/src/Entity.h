@@ -1,10 +1,10 @@
 #pragma once
 #include <Box2D\Box2D.h>
-#include "IStepable.h"
+#include "StepableObject.h"
 
 namespace df
 {
-	class Entity: public df::IStepable
+	class Entity: public df::StepableObject
 	{
 	protected:
 		b2Body *physicBody;

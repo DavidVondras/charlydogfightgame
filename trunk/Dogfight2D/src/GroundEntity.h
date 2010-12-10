@@ -1,13 +1,11 @@
 #pragma once
 #include "DogfightCore.h"
-#include "IStepable.h"
-#include "BoundableObject.h"
+#include "PhysicObject.h"
 
 namespace df
 {
 	class GroundEntity: 
-		public df::IStepable,
-		public df::BoundableObject
+		public df::PhysicObject
 	{
 	public:
 		GroundEntity(void);

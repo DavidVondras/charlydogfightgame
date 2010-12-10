@@ -1,10 +1,10 @@
 #pragma once
-#include "IStepable.h"
+#include "StepableObject.h"
 
 namespace df
 {
 	class GhostObject : 
-		public df::IStepable
+		public df::StepableObject
 	{
 	private:
 		sf::Sprite _sprite;
