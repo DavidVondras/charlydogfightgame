@@ -9,7 +9,7 @@ df::World::World(void)
 
 df::World::~World(void)
 {
-	delete _actor;
+	df::ListHelper::ClearListPointer<df::StepableObject>(_stepableObjects);
 	delete _physicWorld;
 }
 
@@ -22,10 +22,11 @@ void df::World::Initialize(df::WorldDefinition const worldDefinition)
 		b2Vec2 gravity(0.0f, -10.0f);
 		bool doSleep = true;
 		_physicWorld = new b2World(gravity, doSleep);
-	}
-		
+	}	
+
 	// Actor creation
 	df::JetEntity *jetEntity = new df::JetEntity();
+	_stepableObjects.push_back(jetEntity);
 	_actor = jetEntity;
 	jetEntity->RegisterToPhysicWorld(*_physicWorld);
 }

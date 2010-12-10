@@ -1,13 +1,11 @@
 #pragma once
-#include "IStepable.h"
-#include "BoundableObject.h"
+#include "PhysicObject.h"
 #include "DogfightCore.h"
 
 namespace df
 {
 	class TreeEntity : 
-		public df::IStepable,
-		public df::BoundableObject
+		public df::PhysicObject
 	{
 	private:
 		sf::Sprite _sprite;

@@ -57,7 +57,7 @@
     <ClCompile Include="src\GroundEntity.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="src\BoundableObject.cpp">
+    <ClCompile Include="src\PhysicObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -72,9 +72,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\IScreen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\IStepable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\World.h">
@@ -110,16 +107,20 @@
     <ClInclude Include="src\GroundEntity.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="src\BoundableObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\ListHelper.h">
       <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PhysicObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StepableObject.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Context.h">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

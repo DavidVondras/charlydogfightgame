@@ -4,10 +4,13 @@
 
 namespace df
 {
-	class IStepable
+	class StepableObject
 	{
 	public:
 		virtual void Think(df::InputListener const &inputListner) = 0;
 		virtual void Draw(sf::RenderWindow &renderWindow) = 0;
+
+		// Object Type identifier
+		virtual bool IsPhysicObject(void) { return false; }
 	};
 }

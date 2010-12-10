@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="df::PhysicObject">
+    <Position X="3" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAACAAAAAAAAAEAAAAAAAAAAAgAAEAAAAAAAAAIAA=</HashCode>
+      <FileName>src\PhysicObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="df::Game" Collapsed="true">
+    <Position X="11.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAQAAAAEAAAAAAEyAAAAAIAAAAAAAAMA=</HashCode>
+      <FileName>src\Game.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="df::GameInputListener" Collapsed="true">
+    <Position X="14.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAIAEAAAIAACACgAAAAQAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>src\GameInputListener.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="df::InputListener" Collapsed="true">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAEAAAIAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\InputListener.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="df::IScreen" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\IScreen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="df::StepableObject">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAEAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>src\StepableObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="df::GhostObject">
+    <Position X="5.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAgAAAAAAAAAACAAAAAAAAAEAIAAAAAA=</HashCode>
+      <FileName>src\GhostObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="df::World">
+    <Position X="7.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAABAgAwAIAAAAAAAAACACAAAAAAAgIAAAAAA=</HashCode>
+      <FileName>src\World.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="df::Context" Collapsed="true">
+    <Position X="12.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAgAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>src\Context.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="df::GroundEntity" Collapsed="true">
+    <Position X="0.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAgAQAAAAAAAAAAAAAAAAAAAAIAAAQAA=</HashCode>
+      <FileName>src\GroundEntity.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="df::JetEntity" Collapsed="true">
+    <Position X="3" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAgAAAAAAAAAAAAAAQAAAAAEAoCCAAAA=</HashCode>
+      <FileName>src\JetEntity.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="df::TreeEntity" Collapsed="true">
+    <Position X="5.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAEAAAAAAgAAAAAAAAAAAAAAQACAAAEAoAAAAAA=</HashCode>
+      <FileName>src\TreeEntity.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="df::ArrayHelper" Collapsed="true">
+    <Position X="10.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\ArrayHelper.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="df::FileHelper" Collapsed="true">
+    <Position X="14" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\FileHelper.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="df::ListHelper" Collapsed="true">
+    <Position X="10.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>src\ListHelper.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="df::ObjectDefinitionLoader" Collapsed="true">
+    <Position X="12.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAEAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\ObjectDefinitionLoader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="df::WorldDefinition" Collapsed="true">
+    <Position X="14" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAACAAAAAAEAgAAAACAAAEAAAAAAEAAAAAABQAAAAAA=</HashCode>
+      <FileName>src\WorldDefinition.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="df::Point" Collapsed="true">
+    <Position X="10.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAgAAAAAAAAgAAAAAAAAAEAAAAAAAAAEAAAAAAAYAA=</HashCode>
+      <FileName>src\DogfightCore.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="df::Size" Collapsed="true">
+    <Position X="12.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAgAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\DogfightCore.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
