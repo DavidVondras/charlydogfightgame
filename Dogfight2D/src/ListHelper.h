@@ -1,6 +1,9 @@
 #pragma once
 #include <list>
 
+#define foreach(type, i, listObject) \
+	for(std::list<type>::iterator i = listObject.begin(); i != listObject.end(); i++)
+
 namespace df
 {
 	class ListHelper

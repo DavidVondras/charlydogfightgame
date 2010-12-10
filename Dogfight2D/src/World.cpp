@@ -33,7 +33,13 @@ void df::World::Initialize(df::WorldDefinition const worldDefinition)
 
 void df::World::Think(df::InputListener const &inputListner)
 {
-	_actor->Think(inputListner);
+	// Perform stepable think()
+	foreach(df::StepableObject*, i, _stepableObjects)
+	{
+		(*i)->Think(inputListner);
+	}
+
+	// Step physic world
 	_physicWorld->Step(df::Context::getEllapsedTime(), 6, 2);
 }
 
