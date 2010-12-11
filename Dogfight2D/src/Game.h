@@ -5,7 +5,6 @@
 #include "ObjectDefinitionLoader.h"
 #include "World.h"
 #include "IScreen.h"
-#include "Entity.h"
 
 namespace df
 {
@@ -30,7 +29,7 @@ namespace df
 
 			// Targeted entity. If null, the view is in free mode.
 			// In free mode, view is controled directly by user.
-			df::Entity *targetedEntity;
+			df::StepableObject *targetedEntity;
 		} _actorViewDefinition;
 
 		// Refreshes the view
