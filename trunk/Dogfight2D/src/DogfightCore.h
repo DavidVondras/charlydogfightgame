@@ -32,7 +32,7 @@ namespace df
 		float Y;
 
 		// Transforms the current point into pixels
-		sf::Vector2f ToPixel(void) { return sf::Vector2f(X * PixelPerMeterCoef, -Y  *PixelPerMeterCoef); }
+		sf::Vector2f ToPixel(void) { return sf::Vector2f(X * PixelPerMeterCoef, -Y  * PixelPerMeterCoef); }
 
 		// Transforms the current point into physic meter
 		b2Vec2 ToMeter(void) { return b2Vec2(X, Y); }
@@ -42,6 +42,13 @@ namespace df
 		{
 			X = pixelPoint.x / PixelPerMeterCoef;
 			Y = - pixelPoint.y / PixelPerMeterCoef;
+		}
+
+		// Set the current point from a pixel point
+		void FromPixel(float x, float y)
+		{
+			X = x / PixelPerMeterCoef;
+			Y = -y / PixelPerMeterCoef;
 		}
 
 		// Set the current point from a physic meter point
