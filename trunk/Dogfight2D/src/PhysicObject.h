@@ -14,8 +14,7 @@ namespace df
 		std::list<df::Point*> _boundaryPoints;
 
 	public:
-		PhysicObject(void);
-		~PhysicObject(void);
+		virtual ~PhysicObject(void) {};
 
 		virtual void RegisterToPhysicWorld(b2World &world) = 0;
 

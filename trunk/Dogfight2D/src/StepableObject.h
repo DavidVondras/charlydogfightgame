@@ -7,6 +7,8 @@ namespace df
 	class StepableObject
 	{
 	public:
+		virtual ~StepableObject() {};
+
 		virtual void Think(df::InputListener const &inputListner) = 0;
 		virtual void Draw(sf::RenderWindow &renderWindow) = 0;
 

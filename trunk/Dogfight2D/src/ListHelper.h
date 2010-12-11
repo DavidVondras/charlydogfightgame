@@ -1,7 +1,7 @@
 #pragma once
 #include <list>
 
-#define foreach(type, i, listObject) \
+#define foreach(type, listObject) \
 	for(std::list<type>::iterator i = listObject.begin(); i != listObject.end(); i++)
 
 namespace df

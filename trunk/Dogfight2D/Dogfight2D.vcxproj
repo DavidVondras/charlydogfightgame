@@ -63,7 +63,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\PhysicObject.cpp" />
     <ClCompile Include="src\GroundEntity.cpp" />
     <ClCompile Include="src\JetEntity.cpp" />
     <ClCompile Include="src\Context.cpp" />
