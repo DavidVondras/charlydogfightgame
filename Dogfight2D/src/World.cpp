@@ -28,13 +28,21 @@ void df::World::Initialize(df::WorldDefinition const worldDefinition)
 	df::JetEntity *jetEntity = new df::JetEntity();
 	_stepableObjects.push_back(jetEntity);
 	_actor = jetEntity;
-	jetEntity->RegisterToPhysicWorld(*_physicWorld);
+
+	// Register physic object
+	foreach(df::StepableObject*, _stepableObjects)
+	{
+		if((*i)->IsPhysicObject())
+		{
+			((df::PhysicObject*)(*i))->RegisterToPhysicWorld(*_physicWorld);
+		}
+	}
 }
 
 void df::World::Think(df::InputListener const &inputListner)
 {
 	// Perform stepable think()
-	foreach(df::StepableObject*, i, _stepableObjects)
+	foreach(df::StepableObject*, _stepableObjects)
 	{
 		(*i)->Think(inputListner);
 	}
