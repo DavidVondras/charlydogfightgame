@@ -12,8 +12,7 @@ df::TreeEntity::TreeEntity(void)
 		return;
 	}
 	_sprite.SetImage(_image);
-	_position.X = 50.f;
-	_position.Y = 30.f;
+	_position.SetMeter(50.f, 30.f);
 }
 
 

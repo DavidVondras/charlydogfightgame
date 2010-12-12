@@ -25,7 +25,11 @@ namespace df
 			sf::View View;
 
 			// Current velocity of the view 
-			df::Point Velocity;
+			struct VelocityViewStruct
+			{
+				VelocityViewStruct(): X(0.f), Y(0.f) {}
+				float X, Y;
+			} Velocity;
 
 			// Targeted entity. If null, the view is in free mode.
 			// In free mode, view is controled directly by user.

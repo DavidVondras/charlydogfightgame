@@ -14,8 +14,7 @@ df::JetEntity::JetEntity(void)
 	_sprite.SetImage(_image);
 
 	// Initialize position
-	_position.X = 30.f;
-	_position.Y = 30.f;
+	_position.SetMeter(30.f, 30.f);
 	_rotation = Angle::FromDegree(30);
 
 	// Create the boundary
@@ -66,7 +65,7 @@ void df::JetEntity::RegisterToPhysicWorld(b2World &world)
 void df::JetEntity::Think(df::InputListener const &inputListner)
 {
 	// Update position
-	_position.FromMeter(_physicBody->GetPosition());
+	_position.SetMeter(_physicBody->GetPosition());
 	_rotation.SetRadian(_physicBody->GetAngle());
 }
 

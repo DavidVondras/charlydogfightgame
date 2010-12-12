@@ -48,7 +48,7 @@ namespace df
 			_hasDegreeValue = false;
 		}
 
-		// Create a point from Degree value
+		// Creates an angle from Degree value
 		static Angle FromDegree(const float &value) 
 		{
 			Angle angle;
@@ -56,7 +56,7 @@ namespace df
 			return angle;
 		}
 
-		// Create a point from radian value
+		// Creates an angle from radian value
 		static Angle FromRadian(const float &value)
 		{
 			Angle angle;

@@ -39,10 +39,10 @@ void df::World::Initialize(df::WorldDefinition const worldDefinition)
 	}
 
 	b2BodyDef groundBodyDef;
-	groundBodyDef.position = df::Point(0.f, 10.f).ToMeter();
+	groundBodyDef.position = df::Point::FromMeter(0.f, 10.f).ToMeter();
 	b2Body* groundBody = _physicWorld->CreateBody(&groundBodyDef);
 	b2PolygonShape groundBox;
-	groundBox.SetAsEdge(df::Point(0.f,0.f).ToMeter(), df::Point(200.f, 0.f).ToMeter());
+	groundBox.SetAsEdge(df::Point::FromMeter(0.f,0.f).ToMeter(), df::Point::FromMeter(200.f, 0.f).ToMeter());
 	groundBody->CreateFixture(&groundBox, 1.f);
 }
 
