@@ -29,10 +29,10 @@ namespace df
 		~World(void);
 
 		// Initialization
-		void Initialize(df::WorldDefinition const worldDefinition);
+		void Initialize(const df::WorldDefinition worldDefinition);
 
 		// IStepable methods
-		void Think(df::InputListener const &inputListner);
+		void Think(const df::InputListener &inputListner);
 		void Draw(sf::RenderWindow &renderWindow);
 	};
 }
