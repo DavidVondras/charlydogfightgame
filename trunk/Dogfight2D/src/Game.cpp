@@ -6,7 +6,6 @@ df::Game::Game(sf::RenderWindow &renderWindow):
 {
 }
 
-
 df::Game::~Game(void)
 {
 }
@@ -18,7 +17,8 @@ int df::Game::Initialize(std::string sceneryName)
 
 	// Actor view Initialization
 	_actorViewDefinition.targetedEntity = NULL;
-	_actorViewDefinition.Velocity = df::Point();
+	_actorViewDefinition.Velocity.X = 0;
+	_actorViewDefinition.Velocity.Y = 0;
 	_actorViewDefinition.View.SetCenter(screenHalfSize.x,-screenHalfSize.y);
 
 	// Loading world definition
