@@ -6,6 +6,10 @@
 
 namespace df
 {
+#define PI 3.14f
+#define ConvertDegreeIntoRadian(degreeAngle) degreeAngle*PI/180.f
+#define ConvertRadianIntoDegree(radianAngle) radianAngle*180.f/PI
+
 	// Point definition
 	struct Point
 	{

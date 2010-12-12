@@ -11,6 +11,7 @@ namespace df
 		sf::Sprite _sprite;
 		sf::Image _image;
 		df::Point _position;
+		float _rotation; // in radians
 
 	public:
 		JetEntity(void);
