@@ -16,12 +16,12 @@ df::JetEntity::JetEntity(void)
 	// Initialize position
 	_position.X = 30.f;
 	_position.Y = 30.f;
-	_rotation = ConvertDegreeIntoRadian(30);
+	_rotation = Angle::FromDegree(30);
 
 	// Create the boundary
-	_boundaryPoints.push_back(new df::Point(sf::Vector2f(0.f, 45.f)));
-	_boundaryPoints.push_back(new df::Point(sf::Vector2f(160.f, 40.f)));
-	_boundaryPoints.push_back(new df::Point(sf::Vector2f(160.f, 0.f)));
+	_boundaryPoints.push_back(new df::Point(sf::Vector2f(15.f, 53.f)));
+	_boundaryPoints.push_back(new df::Point(sf::Vector2f(167.f, 52.f)));
+	_boundaryPoints.push_back(new df::Point(sf::Vector2f(117.f, 27.f)));
 	_boundaryPoints.push_back(new df::Point(sf::Vector2f(0.f, 0.f)));
 	
 	// Initialize physic body instance
@@ -36,12 +36,14 @@ df::JetEntity::~JetEntity(void)
 
 void df::JetEntity::RegisterToPhysicWorld(b2World &world)
 {
+	// Create body
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
 	bodyDef.position = _position.ToMeter();
-	bodyDef.angle = _rotation;
+	bodyDef.angle = _rotation.ToRadian();
 	_physicBody = world.CreateBody(&bodyDef);
 
+	// Set body shape
 	b2PolygonShape shape;
 	b2Vec2 vertices[8];
 	int currentIndex = 0;
@@ -49,29 +51,30 @@ void df::JetEntity::RegisterToPhysicWorld(b2World &world)
 	shape.Set(vertices, _boundaryPoints.size());
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &shape;
-	fixtureDef.density = 1.0f;
+	fixtureDef.density = 10.0f;
 	fixtureDef.friction = 0.3f;
 	_physicBody->CreateFixture(&fixtureDef);
-	b2MassData massData;
-	_physicBody->GetMassData(&massData);
-	massData.mass = 1000.f;
-	std::cout<<"jet mass = "<<massData.mass<<std::endl;
-	std::cout<<"jet center of mass = "<<massData.center.x<<"; "<<massData.center.y<<std::endl;
-	std::cout<<"jet intertia = "<<massData.I<<std::endl;
+
+	// Set body mass data
+	b2MassData newMassData;
+	newMassData.mass = 1000.f;
+	newMassData.center = df::Point(sf::Vector2f(86.f, 43.f)).ToMeter();
+	newMassData.I = 80000.f;
+	_physicBody->SetMassData(&newMassData);
 }
 
 void df::JetEntity::Think(df::InputListener const &inputListner)
 {
 	// Update position
 	_position.FromMeter(_physicBody->GetPosition());
-	_rotation = _physicBody->GetAngle();
+	_rotation.SetRadian(_physicBody->GetAngle());
 }
 
 void df::JetEntity::Draw(sf::RenderWindow &renderWindow)
 {
 	// Sprite
 	_sprite.SetPosition(_position.ToPixel());
-	_sprite.SetRotation(ConvertRadianIntoDegree(_rotation));
+	_sprite.SetRotation(_rotation.ToDegree());
 	renderWindow.Draw(_sprite);
 
 	// debug boundary

@@ -77,6 +77,7 @@
     <ClCompile Include="src\TreeEntity.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Angle.h" />
     <ClInclude Include="src\PhysicObject.h" />
     <ClInclude Include="src\GroundEntity.h" />
     <ClInclude Include="src\JetEntity.h" />
@@ -90,6 +91,8 @@
     <ClInclude Include="src\GameInputListener.h" />
     <ClInclude Include="src\InputListener.h" />
     <ClInclude Include="src\IScreen.h" />
+    <ClInclude Include="src\Point.h" />
+    <ClInclude Include="src\Size.h" />
     <ClInclude Include="src\StepableObject.h" />
     <ClInclude Include="src\GhostObject.h" />
     <ClInclude Include="src\World.h" />

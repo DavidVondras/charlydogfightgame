@@ -113,6 +113,15 @@
     <ClInclude Include="src\StepableObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Angle.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Point.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Size.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Context.h">
