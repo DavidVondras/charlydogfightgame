@@ -1,4 +1,5 @@
 #include "JetEntity.h"
+#include "GameInputListener.h"
 #include <iostream>
 
 
@@ -16,6 +17,7 @@ df::JetEntity::JetEntity(void)
 	// Initialize position
 	_position.SetMeter(30.f, 30.f);
 	_rotation = Angle::FromDegree(30);
+	_engineValue = 0.f;
 
 	// Create the boundary
 	_boundaryPoints.push_back(new df::Point(sf::Vector2f(15.f, 53.f)));
@@ -62,11 +64,22 @@ void df::JetEntity::RegisterToPhysicWorld(b2World &world)
 	_physicBody->SetMassData(&newMassData);
 }
 
-void df::JetEntity::Think(df::InputListener const &inputListner)
+void df::JetEntity::Think(const df::InputListener &inputListner)
 {
 	// Update position
 	_position.SetMeter(_physicBody->GetPosition());
 	_rotation.SetRadian(_physicBody->GetAngle());
+
+	// Check inputs
+	if(inputListner.IsGameListener())
+	{
+		df::GameInputListener *gameListener = (df::GameInputListener*)(&inputListner);
+		if(gameListener->getEngineValueChanged())
+		{
+			_engineValue = gameListener->getEngineInputValue();
+			std::cout<<"Engine: "<<_engineValue<<std::endl;
+		}
+	}
 }
 
 void df::JetEntity::Draw(sf::RenderWindow &renderWindow)
@@ -86,8 +99,8 @@ void df::JetEntity::Draw(sf::RenderWindow &renderWindow)
 
 	// debug boudary vertices
 	foreach(df::Point*, _boundaryPoints)
-		renderWindow.Draw(sf::Shape::Circle(_sprite.TransformToGlobal((*i)->ToPixel() + _sprite.GetCenter()), 3.f, sf::Color::White));
+		renderWindow.Draw(sf::Shape::Circle(_sprite.TransformToGlobal((*i)->ToPixel()), 3.f, sf::Color::White));
 
 	// debug center
-	renderWindow.Draw(sf::Shape::Circle(_sprite.TransformToGlobal(df::Point(_physicBody->GetLocalCenter()).ToPixel() + _sprite.GetCenter()), 3.f, sf::Color::Yellow));
+	renderWindow.Draw(sf::Shape::Circle(_sprite.TransformToGlobal(df::Point(_physicBody->GetLocalCenter()).ToPixel()), 3.f, sf::Color::Yellow));
 }

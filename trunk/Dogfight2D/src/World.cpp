@@ -13,7 +13,7 @@ df::World::~World(void)
 	delete _physicWorld;
 }
 
-void df::World::Initialize(df::WorldDefinition const worldDefinition)
+void df::World::Initialize(const df::WorldDefinition worldDefinition)
 {
 	// world definition temporary backup
 	_tempDef = worldDefinition;
@@ -46,7 +46,7 @@ void df::World::Initialize(df::WorldDefinition const worldDefinition)
 	groundBody->CreateFixture(&groundBox, 1.f);
 }
 
-void df::World::Think(df::InputListener const &inputListner)
+void df::World::Think(const df::InputListener &inputListner)
 {
 	// Perform stepable think()
 	foreach(df::StepableObject*, _stepableObjects)

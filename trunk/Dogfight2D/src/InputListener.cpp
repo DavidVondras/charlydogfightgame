@@ -6,6 +6,9 @@ df::InputListener::~InputListener(void){}
 
 void df::InputListener::Listen(sf::RenderWindow &renderWindow)
 {
+	// Custom event listeing method
+	OnListenCalled(renderWindow);
+
 	// Process events
     sf::Event inputEvent;
     while (renderWindow.GetEvent(inputEvent))

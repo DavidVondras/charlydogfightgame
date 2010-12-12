@@ -12,6 +12,7 @@ namespace df
 		sf::Image _image;
 		df::Point _position;
 		df::Angle _rotation;
+		float _engineValue;
 
 	public:
 		JetEntity(void);
