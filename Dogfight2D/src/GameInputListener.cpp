@@ -13,8 +13,8 @@ df::GameInputListener::~GameInputListener(void)
 
 void df::GameInputListener::ProcessEvent(sf::Event inputEvent, sf::RenderWindow &renderWindow)
 {
-	_navigateLeftIsPressed = renderWindow.GetInput().IsKeyDown(sf::Key::Left);
-	_navigateRightIsPressed = renderWindow.GetInput().IsKeyDown(sf::Key::Right);
-	_navigateUpIsPressed = renderWindow.GetInput().IsKeyDown(sf::Key::Up);
-	_navigateDownIsPressed = renderWindow.GetInput().IsKeyDown(sf::Key::Down);
+	_navigateLeftIsPressed = renderWindow.GetInput().IsKeyDown(sf::Key::Numpad4);
+	_navigateRightIsPressed = renderWindow.GetInput().IsKeyDown(sf::Key::Numpad6);
+	_navigateUpIsPressed = renderWindow.GetInput().IsKeyDown(sf::Key::Numpad8);
+	_navigateDownIsPressed = renderWindow.GetInput().IsKeyDown(sf::Key::Numpad2);
 }

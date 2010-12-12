@@ -12,17 +12,17 @@ df::JetEntity::JetEntity(void)
 		return;
 	}
 	_sprite.SetImage(_image);
-	_sprite.SetCenter(80.f, 20.f);
 
 	// Initialize position
-	_position.X = 50.f;
+	_position.X = 30.f;
 	_position.Y = 30.f;
+	_rotation = ConvertDegreeIntoRadian(30);
 
 	// Create the boundary
-	_boundaryPoints.push_back(new df::Point(sf::Vector2f(-80.f, 25.f)));
-	_boundaryPoints.push_back(new df::Point(sf::Vector2f(80.f, 20.f)));
-	_boundaryPoints.push_back(new df::Point(sf::Vector2f(80.f, -20.f)));
-	_boundaryPoints.push_back(new df::Point(sf::Vector2f(-80.f, -20.f)));
+	_boundaryPoints.push_back(new df::Point(sf::Vector2f(0.f, 45.f)));
+	_boundaryPoints.push_back(new df::Point(sf::Vector2f(160.f, 40.f)));
+	_boundaryPoints.push_back(new df::Point(sf::Vector2f(160.f, 0.f)));
+	_boundaryPoints.push_back(new df::Point(sf::Vector2f(0.f, 0.f)));
 	
 	// Initialize physic body instance
 	_physicBody = NULL;
@@ -39,6 +39,7 @@ void df::JetEntity::RegisterToPhysicWorld(b2World &world)
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
 	bodyDef.position = _position.ToMeter();
+	bodyDef.angle = _rotation;
 	_physicBody = world.CreateBody(&bodyDef);
 
 	b2PolygonShape shape;
@@ -51,19 +52,26 @@ void df::JetEntity::RegisterToPhysicWorld(b2World &world)
 	fixtureDef.density = 1.0f;
 	fixtureDef.friction = 0.3f;
 	_physicBody->CreateFixture(&fixtureDef);
+	b2MassData massData;
+	_physicBody->GetMassData(&massData);
+	massData.mass = 1000.f;
+	std::cout<<"jet mass = "<<massData.mass<<std::endl;
+	std::cout<<"jet center of mass = "<<massData.center.x<<"; "<<massData.center.y<<std::endl;
+	std::cout<<"jet intertia = "<<massData.I<<std::endl;
 }
 
 void df::JetEntity::Think(df::InputListener const &inputListner)
 {
 	// Update position
 	_position.FromMeter(_physicBody->GetPosition());
+	_rotation = _physicBody->GetAngle();
 }
 
 void df::JetEntity::Draw(sf::RenderWindow &renderWindow)
 {
 	// Sprite
 	_sprite.SetPosition(_position.ToPixel());
-	_sprite.SetRotation(_physicBody->GetAngle()*180.f/3.14f);// HACK!
+	_sprite.SetRotation(ConvertRadianIntoDegree(_rotation));
 	renderWindow.Draw(_sprite);
 
 	// debug boundary
@@ -79,5 +87,5 @@ void df::JetEntity::Draw(sf::RenderWindow &renderWindow)
 		renderWindow.Draw(sf::Shape::Circle(_sprite.TransformToGlobal((*i)->ToPixel() + _sprite.GetCenter()), 3.f, sf::Color::White));
 
 	// debug center
-	renderWindow.Draw(sf::Shape::Circle(_sprite.TransformToGlobal(sf::Vector2f(0.f, 0.f) + _sprite.GetCenter()), 3.f, sf::Color::Yellow));
+	renderWindow.Draw(sf::Shape::Circle(_sprite.TransformToGlobal(df::Point(_physicBody->GetLocalCenter()).ToPixel() + _sprite.GetCenter()), 3.f, sf::Color::Yellow));
 }
