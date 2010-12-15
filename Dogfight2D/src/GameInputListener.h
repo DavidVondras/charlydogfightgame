@@ -11,6 +11,9 @@ namespace df
 		bool _navigateUpIsPressed;
 		bool _navigateDownIsPressed;
 
+		bool _zoomInIsPressed;
+		bool _zoomOutIsPressed;
+
 		bool _torqueLeftIsPressed;
 		bool _torqueRightIsPressed;
 

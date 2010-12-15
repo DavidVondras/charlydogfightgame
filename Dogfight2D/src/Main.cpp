@@ -9,7 +9,7 @@ int main(void)
 	std::cout<<"Application Started"<<std::endl;
 
 	// sf instances
-	sf::RenderWindow renderWindow(sf::VideoMode(800, 600, 32), "Dogfight");
+	sf::RenderWindow renderWindow(sf::VideoMode(1024, 768, 32), "Dogfight");
 	renderWindow.UseVerticalSync(true);
 	renderWindow.SetFramerateLimit(60);
 	df::Game game(renderWindow);
@@ -23,6 +23,7 @@ int main(void)
 		renderWindow.Clear();
 		game.Step();
 		renderWindow.Display();
+		// Idle time is here! //
 	};
 
 	// End of application
