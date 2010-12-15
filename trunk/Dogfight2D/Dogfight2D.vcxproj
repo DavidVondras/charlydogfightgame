@@ -92,7 +92,9 @@
     <ClInclude Include="src\InputListener.h" />
     <ClInclude Include="src\IScreen.h" />
     <ClInclude Include="src\Point.h" />
+    <ClInclude Include="src\PointStruct.h" />
     <ClInclude Include="src\Size.h" />
+    <ClInclude Include="src\SizeStruct.h" />
     <ClInclude Include="src\StepableObject.h" />
     <ClInclude Include="src\GhostObject.h" />
     <ClInclude Include="src\World.h" />

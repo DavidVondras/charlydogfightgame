@@ -1,5 +1,7 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+#include "PointStruct.h"
+#include "SizeStruct.h"
 
 namespace df
 {
@@ -7,9 +9,14 @@ namespace df
 	{
 	private:
 		static float _ellapsedTime;
+		static df::SizeStructInt _windowSize;
 
 	public:
-		static float getEllapsedTime() { return _ellapsedTime; }
+		// Time ellapsed in last frame
+		static float getEllapsedTime(void) { return _ellapsedTime; }
+
+		// Actual size of the current window
+		static df::SizeStructInt getWindowSize(void) { return _windowSize; }
 
 		// Extracts the render window properties to update the context
 		static void ExtractRenderWindowStatus(sf::RenderWindow const &renderWindow);

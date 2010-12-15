@@ -23,6 +23,9 @@ namespace df
 		{
 			// Sf view instance
 			sf::View View;
+			
+			// Zoom
+			float ZoomValue;
 
 			// Current velocity of the view 
 			struct VelocityViewStruct

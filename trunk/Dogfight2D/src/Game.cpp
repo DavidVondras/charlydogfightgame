@@ -20,6 +20,7 @@ int df::Game::Initialize(std::string sceneryName)
 	_actorViewDefinition.Velocity.X = 0;
 	_actorViewDefinition.Velocity.Y = 0;
 	_actorViewDefinition.View.SetCenter(screenHalfSize.x,-screenHalfSize.y);
+	_actorViewDefinition.ZoomValue = 1.f;
 
 	// Loading world definition
 	df::WorldDefinition worldDefinition;
@@ -52,7 +53,7 @@ void df::Game::Step(void)
 void df::Game::ComputeActorView(void)
 {
 	// Compute screen half size
-	sf::Vector2f screenHalfSize(_renderWindow.GetWidth() / 2.f,  _renderWindow.GetHeight() / 2.f);
+	sf::Vector2f screenHalfSize(_renderWindow.GetWidth() * _actorViewDefinition.ZoomValue / 2.f,  _renderWindow.GetHeight() * _actorViewDefinition.ZoomValue / 2.f);
 
 	// Determine the View mode
 	if(_actorViewDefinition.targetedEntity != NULL)

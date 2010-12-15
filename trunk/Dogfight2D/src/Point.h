@@ -2,6 +2,7 @@
 #include <SFML\System.hpp>
 #include <Box2D\Box2D.h>
 #include "Config.h"
+#include "PointStruct.h"
 
 namespace df
 {
@@ -9,11 +10,7 @@ namespace df
 	class Point
 	{
 	private:
-		struct PointStruct { 
-			PointStruct():X(0.f), Y(0.f){}
-			PointStruct(const float &x, const float &y):X(x), Y(y){} 
-			float X, Y; 
-		} _meterValue, _pixelValue;
+		df::PointStruct _meterValue, _pixelValue;
 		bool _hasMeterValue, _hasPixelValue;
 
 		void UpdateMeterValue(void) 

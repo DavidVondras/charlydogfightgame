@@ -122,6 +122,12 @@
     <ClInclude Include="src\Size.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\PointStruct.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SizeStruct.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Context.h">
