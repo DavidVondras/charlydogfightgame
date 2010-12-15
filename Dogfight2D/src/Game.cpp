@@ -21,6 +21,8 @@ int df::Game::Initialize(std::string sceneryName)
 	_actorViewDefinition.Velocity.Y = 0;
 	_actorViewDefinition.View.SetCenter(screenHalfSize.x,-screenHalfSize.y);
 	_actorViewDefinition.ZoomValue = 1.f;
+	_actorViewDefinition.ZoomValue.setErrorDelta(0.001f);
+	_actorViewDefinition.ZoomValue.setVelocityCoefficient(20.f);
 
 	// Loading world definition
 	df::WorldDefinition worldDefinition;
@@ -53,7 +55,7 @@ void df::Game::Step(void)
 void df::Game::ComputeActorView(void)
 {
 	// Compute screen half size
-	sf::Vector2f screenHalfSize(_renderWindow.GetWidth() * _actorViewDefinition.ZoomValue / 2.f,  _renderWindow.GetHeight() * _actorViewDefinition.ZoomValue / 2.f);
+	sf::Vector2f screenHalfSize(_renderWindow.GetWidth() * _actorViewDefinition.ZoomValue.getValue() / 2.f,  _renderWindow.GetHeight() * _actorViewDefinition.ZoomValue.getValue() / 2.f);
 
 	// Determine the View mode
 	if(_actorViewDefinition.targetedEntity != NULL)
@@ -71,6 +73,11 @@ void df::Game::ComputeActorView(void)
 		_actorViewDefinition.Velocity.X -= _actorViewDefinition.Velocity.X * FREE_VIEW_NAVIGATION_FRICTIONAL_COEF;
 		_actorViewDefinition.Velocity.Y -= _actorViewDefinition.Velocity.Y * FREE_VIEW_NAVIGATION_FRICTIONAL_COEF;
 	}
+	
+	// Check zoom inputs
+	if(_inputListener.getZoomInIsPressed()) _actorViewDefinition.ZoomValue -= 0.5f;
+	if(_inputListener.getZoomOutIsPressed()) _actorViewDefinition.ZoomValue += 0.5f;
+	_actorViewDefinition.ZoomValue.Step(df::Context::getEllapsedTime());
 
 	// Increase View position
 	_actorViewDefinition.View.Move(_actorViewDefinition.Velocity.X, -_actorViewDefinition.Velocity.Y);

@@ -30,16 +30,19 @@ namespace df
 
 		virtual bool IsGameListener(void) const sealed { return true; }
 
-		bool getNavigateRightIsPressed() { return _navigateRightIsPressed; }
-		bool getNavigateLeftIsPressed() { return _navigateLeftIsPressed; }
-		bool getNavigateUpIsPressed() { return _navigateUpIsPressed; }
-		bool getNavigateDownIsPressed() { return _navigateDownIsPressed; }
+		bool getNavigateRightIsPressed(void) const { return _navigateRightIsPressed; }
+		bool getNavigateLeftIsPressed(void) const { return _navigateLeftIsPressed; }
+		bool getNavigateUpIsPressed(void) const { return _navigateUpIsPressed; }
+		bool getNavigateDownIsPressed(void) const { return _navigateDownIsPressed; }
+
+		bool getZoomInIsPressed(void) const { return _zoomInIsPressed; }
+		bool getZoomOutIsPressed(void) const { return _zoomOutIsPressed; }
 
 		bool getTorqueLeftIsPressed() const { return _torqueLeftIsPressed; }
 		bool getTorqueRightIsPressed() const { return _torqueRightIsPressed; }
 
-		bool getEngineValueChanged(void) { return _engineValueChanged; }
-		float getEngineInputValue(void) { return _engineInputValue; }
+		bool getEngineValueChanged(void) const { return _engineValueChanged; }
+		float getEngineInputValue(void) const { return _engineInputValue; }
 	};
 }
 
