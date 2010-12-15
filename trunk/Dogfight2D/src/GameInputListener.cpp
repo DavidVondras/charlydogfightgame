@@ -19,6 +19,9 @@ void df::GameInputListener::OnListenCalled(sf::RenderWindow &renderWindow)
 	_navigateUpIsPressed = renderWindow.GetInput().IsKeyDown(sf::Key::Numpad8);
 	_navigateDownIsPressed = renderWindow.GetInput().IsKeyDown(sf::Key::Numpad2);
 
+	_torqueLeftIsPressed = renderWindow.GetInput().IsKeyDown(sf::Key::Left);
+	_torqueRightIsPressed = renderWindow.GetInput().IsKeyDown(sf::Key::Right);
+
 	_engineValueChanged = false;
 }
 

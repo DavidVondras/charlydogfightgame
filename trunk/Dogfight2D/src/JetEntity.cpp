@@ -79,6 +79,24 @@ void df::JetEntity::Think(const df::InputListener &inputListner)
 			_engineValue = gameListener->getEngineInputValue();
 			std::cout<<"Engine: "<<_engineValue<<std::endl;
 		}
+
+		if(gameListener->getTorqueLeftIsPressed())
+		{
+			_physicBody->ApplyTorque(100000.f);
+		}
+		if(gameListener->getTorqueRightIsPressed())
+		{
+			_physicBody->ApplyTorque(-100000.f);
+		}
+
+		if(gameListener->getEngineValueChanged())
+		{
+			_engineValue = gameListener->getEngineInputValue();
+		}
+
+		_physicBody->ApplyForce(
+			df::Point::FromMeter(0.f, 10000.f*_engineValue).ToMeter(),
+			_position.ToMeter());
 	}
 }
 

@@ -11,6 +11,9 @@ namespace df
 		bool _navigateUpIsPressed;
 		bool _navigateDownIsPressed;
 
+		bool _torqueLeftIsPressed;
+		bool _torqueRightIsPressed;
+
 		bool _engineValueChanged;
 		float _engineInputValue;
 
@@ -28,6 +31,9 @@ namespace df
 		bool getNavigateLeftIsPressed() { return _navigateLeftIsPressed; }
 		bool getNavigateUpIsPressed() { return _navigateUpIsPressed; }
 		bool getNavigateDownIsPressed() { return _navigateDownIsPressed; }
+
+		bool getTorqueLeftIsPressed() const { return _torqueLeftIsPressed; }
+		bool getTorqueRightIsPressed() const { return _torqueRightIsPressed; }
 
 		bool getEngineValueChanged(void) { return _engineValueChanged; }
 		float getEngineInputValue(void) { return _engineInputValue; }
