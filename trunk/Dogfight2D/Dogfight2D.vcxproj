@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Angle.h" />
+    <ClInclude Include="src\floatTransit.h" />
     <ClInclude Include="src\PhysicObject.h" />
     <ClInclude Include="src\GroundEntity.h" />
     <ClInclude Include="src\JetEntity.h" />

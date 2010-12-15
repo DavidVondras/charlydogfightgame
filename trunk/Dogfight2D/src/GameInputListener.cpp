@@ -23,6 +23,7 @@ void df::GameInputListener::OnListenCalled(sf::RenderWindow &renderWindow)
 	_torqueRightIsPressed = renderWindow.GetInput().IsKeyDown(sf::Key::Right);
 
 	_engineValueChanged = false;
+	_zoomInIsPressed = _zoomOutIsPressed = false;
 }
 
 
@@ -71,6 +72,13 @@ void df::GameInputListener::ProcessEvent(sf::Event inputEvent, sf::RenderWindow 
 		case sf::Key::Num9:
 			_engineInputValue = 0.9f;
 			_engineValueChanged = true;
+			break;
+
+		case sf::Key::Numpad9:
+			_zoomInIsPressed = true;
+			break;
+		case sf::Key::Numpad3:
+			_zoomOutIsPressed = true;
 			break;
 		}
 	}
