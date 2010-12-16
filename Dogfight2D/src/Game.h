@@ -18,26 +18,19 @@ namespace df
 		// sf RenderWindow (owned by Main)
 		sf::RenderWindow &_renderWindow;
 
-		// Actor view definition (owner)
-		struct
-		{
-			// Sf view instance
-			sf::View View;
-			
-			// Zoom
-			df::floatTransit ZoomValue;
-
-			// Current velocity of the view 
-			struct VelocityViewStruct
-			{
-				VelocityViewStruct(): X(0.f), Y(0.f) {}
-				float X, Y;
-			} Velocity;
-
+		// TODO: create a specific object to manage these peaces of view information
+		// Game view definition
+		struct {
+			sf::View View; // Sf view instance
+			df::floatTransit Zoom; // Zoom
+			struct { df::floatTransit X, Y; } Position;
+			void Step(float ellapsedTime){
+				Position.X.Step(ellapsedTime), Position.Y.Step(ellapsedTime);
+				View.SetCenter(Position.X.getValue(), Position.Y.getValue()); }
 			// Targeted entity. If null, the view is in free mode.
 			// In free mode, view is controled directly by user.
 			df::StepableObject *targetedEntity;
-		} _actorViewDefinition;
+		} _gameViewDefinition;
 
 		// Refreshes the view
 		void ComputeActorView(void);

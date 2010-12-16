@@ -1,4 +1,5 @@
 #pragma once
+#include<cmath>
 
 namespace df
 {
@@ -17,18 +18,31 @@ namespace df
 		floatTransit(float initValue, float errorDelta, float velocityCoefficient) :
 		  _value(initValue), _target(initValue), _isAsleep(true), _errorDelta(errorDelta) , _velocityCoefficient(velocityCoefficient) {}
 
+		// Get the actual float value
 		float getValue(void) const { return _value; }
-		void setTarget(float value) { _target = value; _isAsleep = false; }
-		float getTarget(void) const { return _target; }
+		
+		// Force the value
 		void setValue(float value) { _value = _target = value; _isAsleep = true; }
+
+		// Set the float target
+		void setTarget(float value) { _target = value; _isAsleep = false; }
+		
+		// Get the float target
+		float getTarget(void) const { return _target; }
+		
+		// Determines the error delta
 		void setErrorDelta(float value) { _errorDelta = value; }
+		
+		// Set the velocity coefficient to reach the target value
 		void setVelocityCoefficient(float value) { _velocityCoefficient = value; }
+		
+		// Perform a step
 		void Step(float ellapsedTime) 
 		{ 
 			if(!_isAsleep) 
 			{
 				_value += (_target - _value)*ellapsedTime*_velocityCoefficient/2.f;
-				if(_value < _errorDelta)
+				if(std::abs(_target - _value) < _errorDelta)
 				{
 					_isAsleep = true;
 					_value = _target;
@@ -39,8 +53,8 @@ namespace df
 		// Equal operator overloading from float
 		df::floatTransit operator= (const float& value)
 		{
-			_target = _value = value;
-			_isAsleep = true;
+			_target = value;
+			_isAsleep = false;
 			return *this;
 		}
 		

@@ -10,8 +10,6 @@ namespace df
 	private:
 		sf::Sprite _sprite;
 		sf::Image _image;
-		df::Point _position;
-		df::Angle _rotation;
 		float _engineValue;
 
 	public:
