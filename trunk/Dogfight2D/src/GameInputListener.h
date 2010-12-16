@@ -20,6 +20,9 @@ namespace df
 		bool _engineValueChanged;
 		float _engineInputValue;
 
+		bool _cameraFreeIsRequested;
+		bool _cameraActorIsRequested;
+
 	protected:
 		void ProcessEvent(sf::Event inputEvent, sf::RenderWindow &renderWindow);
 		void OnListenCalled(sf::RenderWindow &renderWindow);
@@ -43,6 +46,9 @@ namespace df
 
 		bool getEngineValueChanged(void) const { return _engineValueChanged; }
 		float getEngineInputValue(void) const { return _engineInputValue; }
+
+		bool getCameraFreeIsRequested(void) const { return _cameraFreeIsRequested; }
+		bool getCameraActorIsRequested(void) const { return _cameraActorIsRequested; }
 	};
 }
 

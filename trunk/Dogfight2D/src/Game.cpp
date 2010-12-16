@@ -2,13 +2,9 @@
 #include "Context.h"
 
 df::Game::Game(sf::RenderWindow &renderWindow):
-	_renderWindow(renderWindow)
-{
-}
+_renderWindow(renderWindow) {}
 
-df::Game::~Game(void)
-{
-}
+df::Game::~Game(void){}
 
 int df::Game::Initialize(std::string sceneryName)
 {
@@ -16,13 +12,14 @@ int df::Game::Initialize(std::string sceneryName)
 	sf::Vector2f screenHalfSize(_renderWindow.GetWidth() / 2.f,  _renderWindow.GetHeight() / 2.f);
 
 	// Actor view Initialization
-	_actorViewDefinition.targetedEntity = NULL;
-	_actorViewDefinition.Velocity.X = 0;
-	_actorViewDefinition.Velocity.Y = 0;
-	_actorViewDefinition.View.SetCenter(screenHalfSize.x,-screenHalfSize.y);
-	_actorViewDefinition.ZoomValue = 1.f;
-	_actorViewDefinition.ZoomValue.setErrorDelta(0.001f);
-	_actorViewDefinition.ZoomValue.setVelocityCoefficient(20.f);
+	_gameViewDefinition.targetedEntity = NULL;
+	_gameViewDefinition.Position.X.setValue(screenHalfSize.x);
+	_gameViewDefinition.Position.Y.setValue(-screenHalfSize.y);
+	_gameViewDefinition.Position.X.setVelocityCoefficient(10.f);
+	_gameViewDefinition.Position.Y.setVelocityCoefficient(10.f);
+	_gameViewDefinition.Zoom.setValue(1.f);
+	_gameViewDefinition.Zoom.setErrorDelta(0.001f);
+	_gameViewDefinition.Zoom.setVelocityCoefficient(20.f);
 
 	// Loading world definition
 	df::WorldDefinition worldDefinition;
@@ -44,44 +41,50 @@ void df::Game::Step(void)
 	
 	// Setting up the view
 	ComputeActorView();
-	_renderWindow.SetView(_actorViewDefinition.View);
+	_renderWindow.SetView(_gameViewDefinition.View);
 
 	// Launchin Draw process
 	_world.Draw(_renderWindow);
 }
 
-#define FREE_VIEW_NAVIGATION_STRENGTH_VALUE 80.f
-#define FREE_VIEW_NAVIGATION_FRICTIONAL_COEF 0.1f
+#define FREE_VIEW_NAVIGATION_STRENGTH_VALUE 800.f
 void df::Game::ComputeActorView(void)
 {
 	// Compute screen half size
-	sf::Vector2f screenHalfSize(_renderWindow.GetWidth() * _actorViewDefinition.ZoomValue.getValue() / 2.f,  _renderWindow.GetHeight() * _actorViewDefinition.ZoomValue.getValue() / 2.f);
+	sf::Vector2f screenHalfSize(
+		_renderWindow.GetWidth() * _gameViewDefinition.Zoom.getValue() / 2.f,  
+		_renderWindow.GetHeight() * _gameViewDefinition.Zoom.getValue() / 2.f);
+
+	// Check zoom inputs
+	if(_inputListener.getZoomInIsPressed()) _gameViewDefinition.Zoom -= 0.5f;
+	if(_inputListener.getZoomOutIsPressed()) _gameViewDefinition.Zoom += 0.5f;
+	_gameViewDefinition.Zoom.Step(df::Context::getEllapsedTime());
+
+	// Check view mode inputs
+	if(_inputListener.getCameraActorIsRequested()) _gameViewDefinition.targetedEntity = _world.getActor();
+	if(_inputListener.getCameraFreeIsRequested()) _gameViewDefinition.targetedEntity = NULL;
 
 	// Determine the View mode
-	if(_actorViewDefinition.targetedEntity != NULL)
+	if(_gameViewDefinition.targetedEntity != NULL)
 	{
 		// Tracking mode
+		sf::Vector2f &actorPosition = _gameViewDefinition.targetedEntity->_position.ToPixel();
+		_gameViewDefinition.Position.X = actorPosition.x;
+		_gameViewDefinition.Position.Y = actorPosition.y;
 	}
 	else
 	{
 		float navigationStrenghtValue = FREE_VIEW_NAVIGATION_STRENGTH_VALUE * df::Context::getEllapsedTime();
 		// Free mode
-		if(_inputListener.getNavigateLeftIsPressed()) _actorViewDefinition.Velocity.X -= navigationStrenghtValue;
-		if(_inputListener.getNavigateRightIsPressed()) _actorViewDefinition.Velocity.X += navigationStrenghtValue;
-		if(_inputListener.getNavigateUpIsPressed()) _actorViewDefinition.Velocity.Y += navigationStrenghtValue;
-		if(_inputListener.getNavigateDownIsPressed()) _actorViewDefinition.Velocity.Y -= navigationStrenghtValue;
-		_actorViewDefinition.Velocity.X -= _actorViewDefinition.Velocity.X * FREE_VIEW_NAVIGATION_FRICTIONAL_COEF;
-		_actorViewDefinition.Velocity.Y -= _actorViewDefinition.Velocity.Y * FREE_VIEW_NAVIGATION_FRICTIONAL_COEF;
+		if(_inputListener.getNavigateLeftIsPressed()) _gameViewDefinition.Position.X -= navigationStrenghtValue;
+		if(_inputListener.getNavigateRightIsPressed()) _gameViewDefinition.Position.X += navigationStrenghtValue;
+		if(_inputListener.getNavigateUpIsPressed()) _gameViewDefinition.Position.Y -= navigationStrenghtValue;
+		if(_inputListener.getNavigateDownIsPressed()) _gameViewDefinition.Position.Y += navigationStrenghtValue;
 	}
-	
-	// Check zoom inputs
-	if(_inputListener.getZoomInIsPressed()) _actorViewDefinition.ZoomValue -= 0.5f;
-	if(_inputListener.getZoomOutIsPressed()) _actorViewDefinition.ZoomValue += 0.5f;
-	_actorViewDefinition.ZoomValue.Step(df::Context::getEllapsedTime());
 
-	// Increase View position
-	_actorViewDefinition.View.Move(_actorViewDefinition.Velocity.X, -_actorViewDefinition.Velocity.Y);
+	// View position update
+	_gameViewDefinition.Step(df::Context::getEllapsedTime());
 
-	// Setting view properties
-	_actorViewDefinition.View.SetHalfSize(screenHalfSize);
+	// View size update
+	_gameViewDefinition.View.SetHalfSize(screenHalfSize);
 }

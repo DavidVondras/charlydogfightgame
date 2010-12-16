@@ -24,6 +24,7 @@ void df::GameInputListener::OnListenCalled(sf::RenderWindow &renderWindow)
 
 	_engineValueChanged = false;
 	_zoomInIsPressed = _zoomOutIsPressed = false;
+	_cameraActorIsRequested = _cameraFreeIsRequested = false;
 }
 
 
@@ -79,6 +80,13 @@ void df::GameInputListener::ProcessEvent(sf::Event inputEvent, sf::RenderWindow 
 			break;
 		case sf::Key::Numpad3:
 			_zoomOutIsPressed = true;
+			break;
+
+		case sf::Key::F1:
+			_cameraActorIsRequested = true;
+			break;
+		case sf::Key::F2:
+			_cameraFreeIsRequested = true;
 			break;
 		}
 	}

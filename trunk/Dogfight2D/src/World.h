@@ -31,6 +31,9 @@ namespace df
 		// Initialization
 		void Initialize(const df::WorldDefinition worldDefinition);
 
+		// Get the actor instance
+		df::StepableObject* getActor(void) const { return _actor; }
+
 		// IStepable methods
 		void Think(const df::InputListener &inputListner);
 		void Draw(sf::RenderWindow &renderWindow);
