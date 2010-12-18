@@ -131,6 +131,9 @@
     <ClInclude Include="src\floatTransit.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\PointTransit.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Context.h">

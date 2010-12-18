@@ -13,6 +13,7 @@ df::JetEntity::JetEntity(void)
 		return;
 	}
 	_sprite.SetImage(_image);
+	_sprite.SetCenter(86.f, 43.f);
 
 	// Initialize position
 	_position.SetMeter(30.f, 30.f);
@@ -20,10 +21,10 @@ df::JetEntity::JetEntity(void)
 	_engineValue = 0.f;
 
 	// Create the boundary
-	_boundaryPoints.push_back(new df::Point(sf::Vector2f(15.f, 53.f)));
-	_boundaryPoints.push_back(new df::Point(sf::Vector2f(167.f, 52.f)));
-	_boundaryPoints.push_back(new df::Point(sf::Vector2f(117.f, 27.f)));
-	_boundaryPoints.push_back(new df::Point(sf::Vector2f(0.f, 0.f)));
+	_boundaryPoints.push_back(new df::Point(sf::Vector2f(-71.f, 10.f)));
+	_boundaryPoints.push_back(new df::Point(sf::Vector2f(81.f, 9.f)));
+	_boundaryPoints.push_back(new df::Point(sf::Vector2f(31.f, -16.f)));
+	_boundaryPoints.push_back(new df::Point(sf::Vector2f(-86.f, -43.f)));
 	
 	// Initialize physic body instance
 	_physicBody = NULL;
@@ -59,8 +60,8 @@ void df::JetEntity::RegisterToPhysicWorld(b2World &world)
 	// Set body mass data
 	b2MassData newMassData;
 	newMassData.mass = 1000.f;
-	newMassData.center = df::Point(sf::Vector2f(86.f, 43.f)).ToMeter();
-	newMassData.I = 80000.f;
+	newMassData.center = df::Point(sf::Vector2f(0.f, 0.f)).ToMeter();
+	newMassData.I = 5000.f;
 	_physicBody->SetMassData(&newMassData);
 }
 
@@ -117,8 +118,8 @@ void df::JetEntity::Draw(sf::RenderWindow &renderWindow)
 
 	// debug boudary vertices
 	foreach(df::Point*, _boundaryPoints)
-		renderWindow.Draw(sf::Shape::Circle(_sprite.TransformToGlobal((*i)->ToPixel()), 3.f, sf::Color::White));
+		renderWindow.Draw(sf::Shape::Circle(_sprite.TransformToGlobal((*i)->ToPixel() + _sprite.GetCenter()), 3.f, sf::Color::White));
 
 	// debug center
-	renderWindow.Draw(sf::Shape::Circle(_sprite.TransformToGlobal(df::Point(_physicBody->GetLocalCenter()).ToPixel()), 3.f, sf::Color::Yellow));
+	renderWindow.Draw(sf::Shape::Circle(_sprite.TransformToGlobal(df::Point(_physicBody->GetLocalCenter()).ToPixel() + _sprite.GetCenter()), 3.f, sf::Color::Yellow));
 }

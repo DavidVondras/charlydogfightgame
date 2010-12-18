@@ -94,6 +94,7 @@
     <ClInclude Include="src\IScreen.h" />
     <ClInclude Include="src\Point.h" />
     <ClInclude Include="src\PointStruct.h" />
+    <ClInclude Include="src\PointTransit.h" />
     <ClInclude Include="src\Size.h" />
     <ClInclude Include="src\SizeStruct.h" />
     <ClInclude Include="src\StepableObject.h" />
