@@ -21,9 +21,6 @@ namespace df
 
 			// Populate GroundPoints with mockup data
 			worldDefinition.AddGroundPoint(df::Point::FromMeter(0.f,10.f));
-			//worldDefinition.AddGroundPoint(df::Point(60.f,10.f));
-			//worldDefinition.AddGroundPoint(df::Point(65.f,13.f));
-			//worldDefinition.AddGroundPoint(df::Point(70.f,10.f));
 			worldDefinition.AddGroundPoint(df::Point::FromMeter(200.f,10.f));
 
 			// Populate Trees with mockup data

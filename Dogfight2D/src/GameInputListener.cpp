@@ -35,7 +35,7 @@ void df::GameInputListener::ProcessEvent(sf::Event inputEvent, sf::RenderWindow 
 		switch(inputEvent.Key.Code)
 		{
 		case sf::Key::Num0:
-			_engineInputValue = 1.f;
+			_engineInputValue = 0.f;
 			_engineValueChanged = true;
 			break;
 		case sf::Key::Num1:
@@ -72,6 +72,10 @@ void df::GameInputListener::ProcessEvent(sf::Event inputEvent, sf::RenderWindow 
 			break;
 		case sf::Key::Num9:
 			_engineInputValue = 0.9f;
+			_engineValueChanged = true;
+			break;
+		case sf::Key::Back:
+			_engineInputValue = 1.f;
 			_engineValueChanged = true;
 			break;
 
