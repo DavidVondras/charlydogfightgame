@@ -39,6 +39,17 @@ namespace df
 		Point(b2Vec2 meterPoint):
 			_meterValue(PointStruct(meterPoint.x, meterPoint.y)), _hasMeterValue(true), _hasPixelValue(false) {} 
 
+		// Applies a rotation on the Point
+		df::Point ApplyRotation(df::Angle &angle)
+		{
+			df::Point pointTransformed;
+			b2Vec2 meterPoint = this->ToMeter();
+			pointTransformed.SetMeter(
+				std::cosf(angle.ToRadian())*meterPoint.x - std::sinf(angle.ToRadian())*meterPoint.y,
+				std::sinf(angle.ToRadian())*meterPoint.x + std::cosf(angle.ToRadian())*meterPoint.y);
+			return pointTransformed;
+		}
+
 		// Get the Pixel value
 		sf::Vector2f ToPixel(void)
 		{
