@@ -1,5 +1,6 @@
 #include "JetEntity.h"
 #include "GameInputListener.h"
+#include "MathHelper.h"
 #include <iostream>
 
 
@@ -83,11 +84,11 @@ void df::JetEntity::Think(const df::InputListener &inputListner)
 
 		if(gameListener->getTorqueLeftIsPressed())
 		{
-			_physicBody->ApplyTorque(100000.f);
+			_physicBody->ApplyTorque(50000.f);
 		}
 		if(gameListener->getTorqueRightIsPressed())
 		{
-			_physicBody->ApplyTorque(-100000.f);
+			_physicBody->ApplyTorque(-50000.f);
 		}
 
 		if(gameListener->getEngineValueChanged())
@@ -97,7 +98,7 @@ void df::JetEntity::Think(const df::InputListener &inputListner)
 
 		_physicBody->ApplyForce(
 			//df::Point::FromMeter(0.f, 10000.f*_engineValue).ToMeter(),
-			df::Point::FromMeter(100000.f*_engineValue, 0.f).ApplyRotation(_rotation).ToMeter(),
+			df::Point::FromMeter(50000.f*_engineValue, 0.f).ApplyRotation(_rotation).ToMeter(),
 			_position.ToMeter());
 	}
 }

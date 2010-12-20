@@ -60,7 +60,7 @@ void df::World::Think(const df::InputListener &inputListner)
 
 #define DebugLineHorizontalOffset 20.f
 #define DebugLineVerticalOffset 50.f
-#define DebugLineFontSize 12.f
+#define DebugLineFontSize 16.f
 void df::World::Draw(sf::RenderWindow &renderWindow)
 {
 	// Render the grid
@@ -87,7 +87,7 @@ void df::World::Draw(sf::RenderWindow &renderWindow)
 		// Draw altitude
 		sprintf_s(stringBuffer, "%i m", (int)i);
 		sf::String shapeString = sf::String(stringBuffer, sf::Font::GetDefaultFont(), DebugLineFontSize);
-		shapeString.SetPosition(currentView.GetRect().Left + 10.f, -i*PixelPerMeterCoef - 15.f);
+		shapeString.SetPosition(currentView.GetRect().Left + 10.f, -i*PixelPerMeterCoef - 20.f);
 		shapeString.SetColor(sf::Color(100,100,100,255));
 		renderWindow.Draw(shapeString);
 	}
