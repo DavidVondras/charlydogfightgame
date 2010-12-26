@@ -73,6 +73,7 @@
     <ClCompile Include="src\InputListener.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\GhostObject.cpp" />
+    <ClCompile Include="src\PropertyListener.cpp" />
     <ClCompile Include="src\World.cpp" />
     <ClCompile Include="src\TreeEntity.cpp" />
   </ItemGroup>
@@ -96,6 +97,7 @@
     <ClInclude Include="src\Point.h" />
     <ClInclude Include="src\PointStruct.h" />
     <ClInclude Include="src\PointTransit.h" />
+    <ClInclude Include="src\PropertyListener.h" />
     <ClInclude Include="src\Size.h" />
     <ClInclude Include="src\SizeStruct.h" />
     <ClInclude Include="src\StepableObject.h" />

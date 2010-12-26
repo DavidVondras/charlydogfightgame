@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Context.h"
 #include "Game.h"
+#include "PropertyListener.h"
 
 int main(void)
 {
@@ -27,6 +28,7 @@ int main(void)
 	};
 
 	// End of application
+	df::PropertyListener::DeleteInstance();
 	std::cout<<"Application Ended"<<std::endl;
 	return EXIT_SUCCESS;
 }

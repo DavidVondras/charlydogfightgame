@@ -29,7 +29,7 @@ void df::World::Initialize(const df::WorldDefinition worldDefinition)
 	_stepableObjects.push_back(jetEntity);
 	_actor = jetEntity;
 
-	// Register physic object
+	// Register physic objects
 	foreach(df::StepableObject*, _stepableObjects)
 	{
 		if((*i)->IsPhysicObject())
@@ -38,12 +38,16 @@ void df::World::Initialize(const df::WorldDefinition worldDefinition)
 		}
 	}
 
+	// Create the ground bounding box
 	b2BodyDef groundBodyDef;
 	groundBodyDef.position = b2Vec2(0.f, 10.f);
 	b2Body* groundBody = _physicWorld->CreateBody(&groundBodyDef);
 	b2PolygonShape groundBox;
 	groundBox.SetAsEdge(df::Point::FromMeter(0.f,0.f).ToMeter(), df::Point::FromMeter(200.f, 0.f).ToMeter());
 	groundBody->CreateFixture(&groundBox, 1.f);
+
+	// Display jet properties in propertyListener
+	jetEntity->AddInPropertyListener();
 }
 
 void df::World::Think(const df::InputListener &inputListner)

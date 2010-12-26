@@ -37,6 +37,11 @@ df::JetEntity::~JetEntity(void)
 	ListHelper::ClearListPointer(_boundaryPoints);
 }
 
+void df::JetEntity::AddInPropertyListener(void)
+{
+	
+}
+
 void df::JetEntity::RegisterToPhysicWorld(b2World &world)
 {
 	// Create body
@@ -100,6 +105,8 @@ void df::JetEntity::Think(const df::InputListener &inputListner)
 			//df::Point::FromMeter(0.f, 10000.f*_engineValue).ToMeter(),
 			df::Point::FromMeter(50000.f*_engineValue, 0.f).ApplyRotation(_rotation).ToMeter(),
 			_position.ToMeter());
+
+		df::Point localVelocity = df::Point::FromMeter(_physicBody->GetLinearVelocity()).ApplyReverseRotation(_rotation);
 	}
 }
 
