@@ -57,6 +57,9 @@
     <ClCompile Include="src\GroundEntity.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="src\PropertyListener.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game.h">
@@ -136,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="src\MathHelper.h">
       <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PropertyListener.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

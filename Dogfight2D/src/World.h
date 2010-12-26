@@ -8,7 +8,7 @@
 
 namespace df
 {
-	class World: public df::StepableObject
+	class World
 	{
 	private:
 		// Temporary objects

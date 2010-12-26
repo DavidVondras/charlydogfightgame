@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Context.h"
+#include "PropertyListener.h"
 
 df::Game::Game(sf::RenderWindow &renderWindow):
 _renderWindow(renderWindow) {}
@@ -29,8 +30,12 @@ int df::Game::Initialize(std::string sceneryName)
 		return EXIT_FAILURE;
 	}
 
+	// Display the frameRate in the propertyListener stream
+	df::Context::AddInPropertyListener();
+
 	// World definition initialization
 	_world.Initialize(worldDefinition);
+
 	return EXIT_SUCCESS;
 }
 
@@ -43,8 +48,11 @@ void df::Game::Step(void)
 	ComputeActorView();
 	_renderWindow.SetView(_gameViewDefinition.View);
 
-	// Launchin Draw process
+	// Launching Draw process
 	_world.Draw(_renderWindow);
+
+	_renderWindow.SetView(_renderWindow.GetDefaultView());
+	df::PropertyListener::getInstance().Draw(_renderWindow);
 }
 
 #define FREE_VIEW_NAVIGATION_STRENGTH_VALUE 800.f
