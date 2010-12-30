@@ -3,6 +3,7 @@
 #include <Box2D\Box2D.h>
 #include "Config.h"
 #include "PointStruct.h"
+#include "Angle.h"
 
 namespace df
 {
