@@ -3,6 +3,16 @@
 #include <list>
 #include <SFML\Graphics.hpp>
 #include "ListHelper.h"
+#include "Point.h"
+
+namespace Types
+{
+	enum PropertyWrapperType 
+	{ 
+		Float,
+		Point
+	};
+}
 
 namespace df
 {
@@ -12,13 +22,12 @@ namespace df
 		PropertyListener();
 		~PropertyListener();
 
-		enum PropertyWrapperType { floatType };
 		struct PropertyWrapper
 		{
-			PropertyWrapper(float* propertyPtr, std::string stringFormat): 
-			PropertyPtr(propertyPtr), StringFormat(stringFormat), PropertyType(floatType){}
+			PropertyWrapper(void* propertyPtr, std::string stringFormat, Types::PropertyWrapperType type): 
+			PropertyPtr(propertyPtr), StringFormat(stringFormat), PropertyType(type){}
 		
-			PropertyWrapperType PropertyType;
+			Types::PropertyWrapperType PropertyType;
 			void* PropertyPtr;
 			std::string StringFormat;
 		};
@@ -48,6 +57,7 @@ namespace df
 		}
 
 		void AddProperty(float* propertyPtr, const std::string stringFormat);
+		void AddProperty(df::Point* propertyPtr, const std::string stringFormat);
 		void RemoveProperty(void* propertyPtr);
 		void Draw(sf::RenderWindow& renderWindow);
 	};

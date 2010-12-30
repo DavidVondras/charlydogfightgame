@@ -12,6 +12,7 @@ namespace df
 		sf::Sprite _sprite;
 		sf::Image _image;
 		float _engineValue;
+		df::Point _localVelocity;
 
 	public:
 		JetEntity(void);

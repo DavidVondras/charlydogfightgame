@@ -39,7 +39,7 @@ df::JetEntity::~JetEntity(void)
 
 void df::JetEntity::AddInPropertyListener(void)
 {
-	
+	df::PropertyListener::getInstance().AddProperty(&_localVelocity, "localV : x=%.1f m/s  y=%.1f m/s");
 }
 
 void df::JetEntity::RegisterToPhysicWorld(b2World &world)
@@ -106,7 +106,7 @@ void df::JetEntity::Think(const df::InputListener &inputListner)
 			df::Point::FromMeter(50000.f*_engineValue, 0.f).ApplyRotation(_rotation).ToMeter(),
 			_position.ToMeter());
 
-		df::Point localVelocity = df::Point::FromMeter(_physicBody->GetLinearVelocity()).ApplyReverseRotation(_rotation);
+		_localVelocity = df::Point::FromMeter(_physicBody->GetLinearVelocity()).ApplyReverseRotation(_rotation);
 	}
 }
 
