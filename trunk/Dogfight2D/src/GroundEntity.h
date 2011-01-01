@@ -4,6 +4,7 @@
 
 namespace df
 {
+	//TODO: use this class for ground management
 	class GroundEntity: 
 		public df::PhysicObject
 	{
