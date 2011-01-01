@@ -32,6 +32,8 @@ namespace df
 			std::string StringFormat;
 		};
 
+		sf::String _stringRenderBuffer;
+
 		std::list<PropertyWrapper*> _properties;
 
 		// Instance of the singleton

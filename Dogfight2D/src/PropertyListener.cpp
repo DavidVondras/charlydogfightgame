@@ -4,7 +4,19 @@
 // static properties initialization
 df::PropertyListener *df::PropertyListener::_instance = NULL;
 
-df::PropertyListener::PropertyListener(){}
+df::PropertyListener::PropertyListener()
+{
+	// Properties initialization
+	_stringRenderBuffer.SetColor(sf::Color::White);
+	_stringRenderBuffer.SetSize(14.f);
+
+	// Font initialization
+    sf::Font font;
+	std::string fontsLocation = fontsFolder;
+	if (font.LoadFromFile("..\\" + fontsLocation + "MonospaceTypewriter.ttf")) 
+		_stringRenderBuffer.SetFont(font);
+	else std::cerr << "Unable to load the PropertyListener standard font" <<std::endl;
+}
 df::PropertyListener::~PropertyListener(){}
 
 void df::PropertyListener::AddProperty(float* propertyPtr, const std::string stringFormat)
@@ -25,10 +37,7 @@ void df::PropertyListener::RemoveProperty(void* propertyPtr)
 void df::PropertyListener::Draw(sf::RenderWindow& renderWindow)
 {
 	int currentPosition = 5;
-	char stringBuffer[256];
-	sf::String stringRenderBuffer;
-	stringRenderBuffer.SetColor(sf::Color::White);
-	stringRenderBuffer.SetSize(14.f);
+	char stringBuffer[256];	
 	foreach(PropertyWrapper*, _properties)
 	{
 		switch((*i)->PropertyType)
@@ -42,9 +51,9 @@ void df::PropertyListener::Draw(sf::RenderWindow& renderWindow)
 		default:
 			strcpy_s(stringBuffer, "Type not found...");
 		}
-		stringRenderBuffer.SetText(stringBuffer);
-		stringRenderBuffer.SetPosition(5.f, (float)currentPosition);
-		renderWindow.Draw(stringRenderBuffer);
+		_stringRenderBuffer.SetText(stringBuffer);
+		_stringRenderBuffer.SetPosition(5.f, (float)currentPosition);
+		renderWindow.Draw(_stringRenderBuffer);
 		currentPosition += 18;
 	}
 }

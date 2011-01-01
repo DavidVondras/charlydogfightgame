@@ -1,9 +1,10 @@
 #include "JetEntity.h"
 #include "GameInputListener.h"
 #include "MathHelper.h"
+#include "Context.h"
 #include <iostream>
 
-
+/// Default Constructor
 df::JetEntity::JetEntity(void)
 {
 	// Initialize sprite image
@@ -31,17 +32,22 @@ df::JetEntity::JetEntity(void)
 	_physicBody = NULL;
 }
 
-
+/// Default destructor
 df::JetEntity::~JetEntity(void)
 {
 	ListHelper::ClearListPointer(_boundaryPoints);
 }
 
+/// Adds references to the property listener
 void df::JetEntity::AddInPropertyListener(void)
 {
-	df::PropertyListener::getInstance().AddProperty(&_localVelocity, "localV : x=%.1f m/s  y=%.1f m/s");
+	df::PropertyListener::getInstance().AddProperty(&_debug_localVelocity_x, "localV : x=%+3.1f m/s");
+	df::PropertyListener::getInstance().AddProperty(&_debug_localVelocity_y, "localV : y=%+3.1f m/s");
+	df::PropertyListener::getInstance().AddProperty(&_cz, "Cz :%.1f");
+	df::PropertyListener::getInstance().AddProperty(&_engineValue, "Engine :%.1f");
 }
 
+/// Physic initialization
 void df::JetEntity::RegisterToPhysicWorld(b2World &world)
 {
 	// Create body
@@ -65,12 +71,13 @@ void df::JetEntity::RegisterToPhysicWorld(b2World &world)
 
 	// Set body mass data
 	b2MassData newMassData;
-	newMassData.mass = 1000.f;
+	newMassData.mass = Mass;
 	newMassData.center = df::Point(sf::Vector2f(0.f, 0.f)).ToMeter();
-	newMassData.I = 5000.f;
+	newMassData.I = MassInertia;
 	_physicBody->SetMassData(&newMassData);
 }
 
+/// Think frame step
 void df::JetEntity::Think(const df::InputListener &inputListner)
 {
 	// Update position
@@ -80,36 +87,36 @@ void df::JetEntity::Think(const df::InputListener &inputListner)
 	// Check inputs
 	if(inputListner.IsGameListener())
 	{
+		// Update local fields according to inputs
 		df::GameInputListener *gameListener = (df::GameInputListener*)(&inputListner);
-		if(gameListener->getEngineValueChanged())
-		{
-			_engineValue = gameListener->getEngineInputValue();
-			std::cout<<"Engine: "<<_engineValue<<std::endl;
-		}
-
-		if(gameListener->getTorqueLeftIsPressed())
-		{
-			_physicBody->ApplyTorque(50000.f);
-		}
-		if(gameListener->getTorqueRightIsPressed())
-		{
-			_physicBody->ApplyTorque(-50000.f);
-		}
-
-		if(gameListener->getEngineValueChanged())
-		{
-			_engineValue = gameListener->getEngineInputValue();
-		}
-
-		_physicBody->ApplyForce(
-			//df::Point::FromMeter(0.f, 10000.f*_engineValue).ToMeter(),
-			df::Point::FromMeter(50000.f*_engineValue, 0.f).ApplyRotation(_rotation).ToMeter(),
-			_position.ToMeter());
-
-		_localVelocity = df::Point::FromMeter(_physicBody->GetLinearVelocity()).ApplyReverseRotation(_rotation);
+		if(gameListener->getEngineValueChanged()) _engineValue = gameListener->getEngineInputValue();
+		if(gameListener->getTorqueLeftIsPressed()) _physicBody->ApplyTorque(50000.f);
+		if(gameListener->getTorqueRightIsPressed()) _physicBody->ApplyTorque(-50000.f);
+		if(gameListener->getEngineValueChanged()) _engineValue = gameListener->getEngineInputValue();
 	}
+
+	// Compute velocities
+	b2Vec2 globalVelocity = _physicBody->GetLinearVelocity();
+	_localVelocity = df::Point::FromMeter(globalVelocity).ApplyReverseRotation(_rotation);
+	_normalVelocity = std::sqrt(globalVelocity.x*globalVelocity.x + globalVelocity.y*globalVelocity.y);
+
+	// Apply Engine force
+	_physicBody->ApplyForce(
+		df::Point::FromMeter(EngineStrengthCoefficient*_engineValue, 0.f).ApplyRotation(_rotation).ToMeter(),
+		_position.ToMeter());
+		
+	// Apply Cz frictional strength
+	_cz = df::MathHelper::PolyBezier(_normalVelocity, CzVelocityMin, 0.f, CzVelocityMax, 1.f);
+	_physicBody->ApplyForce(
+		df::Point::FromMeter(0.f, -_localVelocity.ToMeter().y*_cz*_physicBody->GetMass()*10).ApplyRotation(_rotation).ToMeter(),
+		_position.ToMeter());
+
+	// Set debug information
+	_debug_localVelocity_x = _localVelocity.ToMeter().x;
+	_debug_localVelocity_y = _localVelocity.ToMeter().y;
 }
 
+/// Draw Frame step
 void df::JetEntity::Draw(sf::RenderWindow &renderWindow)
 {
 	// Sprite

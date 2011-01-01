@@ -25,6 +25,11 @@ int main(void)
 		game.Step();
 		renderWindow.Display();
 		// Idle time is here! //
+
+		if(df::Context::getFrameRate() < 40.f)
+		{
+			std::cout<<"Warning FPS: " << df::Context::getFrameRate() << std::endl;
+		}
 	};
 
 	// End of application
